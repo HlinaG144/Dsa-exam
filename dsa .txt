@@ -1,0 +1,122 @@
+Question number 2
+ 
+import java.util.HashMap;
+import java.util.Map;
+public class sum {
+public int[] twoSum(int[] nums, int target) {
+Map<Integer, Integer> map = new HashMap<>();
+for (int i = 0; i < nums.length; i++) {
+int complement = target - nums[i];
+if (map.containsKey(complement)) {
+return new int[] { map.get(complement), i };
+}
+map.put(nums[i], i);
+}
+throw new IllegalArgumentException("No two sum solution");
+}
+public static void main(String[] args) {
+int[] nums = {2, 7, 11, 15};
+int target = 9;
+question2 solution = new question2();
+int[] result = solution.twoSum(nums, target);
+System.out.println("[" + result[0] + ", " + result[1] + "]");
+}
+}
+
+Question number 3
+
+class CircularQueue {
+    private int[] queue;
+    private int head;
+    private int tail;
+    private int size;
+    private int capacity;
+    public CircularQueue(int k) {
+    capacity = k;
+    queue = new int[capacity];
+    head = -1;
+    tail = -1;
+    size = 0;
+    }
+    public boolean enqueue(int value) {
+    if (isFull()) return false;
+    if (isEmpty()) head = 0;
+    tail = (tail + 1) % capacity;
+    queue[tail] = value;
+    size++;
+    return true;
+    }
+    public boolean dequeue() {
+    if (isEmpty()) return false;
+    if (head == tail) {
+    head = -1;
+    tail = -1;
+    } else {
+    head = (head + 1) % capacity;
+    }
+    size--;
+    return true;
+    }
+    public int front() {
+    return isEmpty() ? -1 : queue[head];
+    }
+    public int rear() {
+    return isEmpty() ? -1 : queue[tail];
+    }
+    public boolean isEmpty() {
+    return size == 0;
+    }
+    public boolean isFull() {
+    return size == capacity;
+    }
+    public static void main(String[] args) {
+    CircularQueue q = new CircularQueue(3);
+    q.enqueue(1);
+    q.enqueue(2);
+    q.enqueue(3);
+    q.dequeue();
+    q.enqueue(4);
+    System.out.println(q.front()); // returns 2
+    System.out.println(q.rear()); // returns 4
+    }
+    }
+
+
+Question number 4
+    public class maximum{
+    public static int findMax(int[] nums) {
+        int max = nums[0];
+        for (int num : nums) {
+        if (num > max) {
+        max = num;
+        }
+        }
+        return max;
+        }
+        public static void main(String[] args) {
+        int[] nums = {37, 29, 27, 44, 65};
+        System.out.println("Maximum element: " + findMax(nums));
+        }
+        }
+ 
+
+
+Question number5
+  import java.util.Stack;
+    public class reverse {
+public static String reverse(String str) {
+Stack<Character> stack = new Stack<>();
+for (char ch : str.toCharArray()) {
+stack.push(ch);
+}
+StringBuilder reversed = new StringBuilder();
+while (!stack.isEmpty()) {
+reversed.append(stack.pop());
+}
+return reversed.toString();
+}
+public static void main(String[] args) {
+String str = "hello";
+System.out.println("Reversed string: " + reverse(str));
+}
+}
